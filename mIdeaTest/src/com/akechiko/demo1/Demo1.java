@@ -19,5 +19,6 @@ public class Demo1 {
         System.out.println(word);
         System.out.println(number);
         System.out.println(number);
+        System.out.println(number);
     }
 }
