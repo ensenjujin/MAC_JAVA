@@ -20,5 +20,6 @@ public class Demo1 {
         System.out.println(number);
         System.out.println(number);
         System.out.println("我是master新增");
+        System.out.println(number);
     }
 }
