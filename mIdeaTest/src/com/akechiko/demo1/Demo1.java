@@ -3,14 +3,10 @@ import java.util.Scanner;
 
 public class Demo1 {
     public static void main(String[] args){
-        InterIpml ipml=new InterIpml();
-        System.out.println(Inter.num);
-        ipml.method();
+        NoteBook noteBook=new NoteBook();
+        noteBook.start();
+        noteBook.useUSB(new Mouse());
+        noteBook.stop();
     }
-}
-
-interface Inter{
-    int num=10;
-    void method();
 }
 
