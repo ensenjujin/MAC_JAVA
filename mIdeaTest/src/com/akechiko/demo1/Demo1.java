@@ -9,12 +9,10 @@ import java.util.Scanner;
 import java.util.logging.SimpleFormatter;
 
 public class Demo1 {
-    public static void main(String[] args) throws ParseException {
-        String str="2018-03-04";
-        SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
-        Date now=sf.parse(str);
-        SimpleDateFormat sf1=new SimpleDateFormat("yyyy年MM月dd日");
-        System.out.println(sf1.format(now));
+    public static void main(String[] args)  {
+        LocalDateTime dateTime=LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter=DateTimeFormatter.ofPattern("yyyy年MM月dd日");
+        System.out.println(dateTime.format(dateTimeFormatter));
     }
 
 }
