@@ -1,17 +1,14 @@
 package com.akechiko.demo1;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Demo1 {
     public static void main(String[] args){
-        System.out.println(sumNumber(20));
+        LocalDateTime localDateTime=LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        System.out.println(localDateTime.format(dateTimeFormatter));
     }
 
-    public static int sumNumber(int a){
-
-        if (a==1 || a==2){
-            return 1;
-        }
-        return  sumNumber(a-2)+sumNumber(a-1);
-    }
 }
