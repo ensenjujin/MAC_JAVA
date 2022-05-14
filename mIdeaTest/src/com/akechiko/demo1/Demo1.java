@@ -1,13 +1,17 @@
 package com.akechiko.demo1;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Demo1 {
     public static void main(String[] args){
-        Person person=new SuperMan();
-        person.eat();
-        person.work();
+        System.out.println(sumNumber(20));
+    }
 
-        SuperMan superMan=(SuperMan) person;
-        superMan.save();
+    public static int sumNumber(int a){
+
+        if (a==1 || a==2){
+            return 1;
+        }
+        return  sumNumber(a-2)+sumNumber(a-1);
     }
 }
