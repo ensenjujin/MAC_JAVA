@@ -8,15 +8,19 @@ import java.util.logging.SimpleFormatter;
 
 public class Demo1 {
     public static void main(String[] args)  {
-        ArrayList<String> list=new ArrayList<>();
-        list.add("aaa");
-        list.add("bbb");
-        list.add("ccc");
-        System.out.println(listTest(list));
+        ArrayList<Integer> list=new ArrayList<>();
+        list.add(111);
+        list.add(222);
+        list.add(333);
+        System.out.println(listTest(list,333));
     }
 
-    public static boolean listTest(ArrayList<String>al){
-        return al.isEmpty();
+    public static int listTest(ArrayList<Integer>al,Integer s){
+        int retu=-1;
+        for (int i = 0; i < al.size(); i++) {
+             retu =al.get(i).equals(s) ?  i : -1;
+        }
+        return retu;
     }
 
 
