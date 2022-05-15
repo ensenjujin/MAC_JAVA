@@ -12,11 +12,11 @@ public class Demo1 {
         list.add("aaa");
         list.add("bbb");
         list.add("ccc");
-        System.out.println(listTest(list,"aaa"));
+        System.out.println(listTest(list));
     }
 
-    public static boolean listTest(ArrayList<String>al,String s){
-        return al.contains(s);
+    public static boolean listTest(ArrayList<String>al){
+        return al.isEmpty();
     }
 
 
