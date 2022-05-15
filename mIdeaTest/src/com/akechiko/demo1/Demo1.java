@@ -8,18 +8,16 @@ import java.util.logging.SimpleFormatter;
 
 public class Demo1 {
     public static void main(String[] args)  {
-        Collection <Integer> collections=new ArrayList<>();
-        collections.add(666);
-        collections.add(111);
-        collections.add(222);
-
-        Object[] objects=collections.toArray();
-        for (int i = 0; i < objects.length; i++) {
-            System.out.println(objects[i]);
-        }
-
+        ArrayList<String> list=new ArrayList<>();
+        list.add("aaa");
+        list.add("bbb");
+        list.add("ccc");
+        System.out.println(listTest(list,"aaa"));
     }
 
+    public static boolean listTest(ArrayList<String>al,String s){
+        return al.contains(s);
+    }
 
 
 }
