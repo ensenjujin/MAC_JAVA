@@ -10,9 +10,11 @@ import java.util.logging.SimpleFormatter;
 
 public class Demo1 {
     public static void main(String[] args)  {
-        LocalDateTime dateTime=LocalDateTime.now();
-        DateTimeFormatter dateTimeFormatter=DateTimeFormatter.ofPattern("yyyy年MM月dd日");
-        System.out.println(dateTime.format(dateTimeFormatter));
+        Student s=new Student();
+        s.setScore(100);
+        s.setScore(-1);
     }
+
+
 
 }
