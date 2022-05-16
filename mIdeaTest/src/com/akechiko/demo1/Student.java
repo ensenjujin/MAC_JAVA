@@ -1,53 +1,74 @@
 package com.akechiko.demo1;
 
-public class Student {
-    String No;
-    String Name;
-    int score;
+public class Student implements Comparable<Student>{
+    private String name;
+    private int chinese;
+    private int math;
+    private int english;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getChinese() {
+        return chinese;
+    }
+
+    public void setChinese(int chinese) {
+        this.chinese = chinese;
+    }
+
+    public int getMath() {
+        return math;
+    }
+
+    public void setMath(int math) {
+        this.math = math;
+    }
+
+    public int getEnglish() {
+        return english;
+    }
+
+    public void setEnglish(int english) {
+        this.english = english;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", chinese=" + chinese +
+                ", math=" + math +
+                ", english=" + english +
+                '}';
+    }
+
+    public Student(String name, int chinese, int math, int english) {
+        this.name = name;
+        this.chinese = chinese;
+        this.math = math;
+        this.english = english;
+    }
 
     public Student() {
     }
 
-    public Student(String no, String name, int score) {
-        No = no;
-        Name = name;
-        this.score = score;
+    public int getSum(){
+        return chinese+math+english;
     }
-
-    public String getNo() {
-        return No;
-    }
-
-    public void setNo(String no) {
-        No = no;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        if (score<0){
-            throw new NoScoreException("分数不能为负数："+score);
-        }
-        this.score = score;
-    }
-
-    public class NoScoreException extends RuntimeException{
-        public NoScoreException() {
-        }
-
-        public NoScoreException(String message) {
-            super(message);
-        }
+    @Override
+    public int compareTo(Student o) {
+        int result=this.getSum()-o.getSum();
+        result = result==0 ? this.getChinese()-o.getChinese():result;
+        result = result==0 ? this.getMath()-o.getMath():result;
+        result = result==0 ? this.getEnglish()-o.getEnglish():result;
+        result = result==0 ? this.getName().compareTo(o.getName()):result;
+        return result;
     }
 }
 

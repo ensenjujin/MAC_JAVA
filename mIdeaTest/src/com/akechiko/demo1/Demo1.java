@@ -9,20 +9,18 @@ import java.util.logging.SimpleFormatter;
 
 public class Demo1 {
     public static void main(String[] args)  {
-        Integer[] a={1,2,3,4,5,6};
-        listTest(a);
-        for (int i = 0; i < a.length; i++) {
-            System.out.println(a[i]);
+        TreeSet<Student> ts=new TreeSet<>();
+
+        Student s1=new Student("zhangsan",80,80,80);
+        Student s2=new Student("lisi",90,90,90);
+        Student s3=new Student("wangwu",100,100,100);
+
+        ts.add(s1);
+        ts.add(s2);
+        ts.add(s3);
+
+        for (Student student:ts){
+            System.out.println(student);
         }
     }
-
-    public static <T> void listTest(T[] al){
-        for (int min=0,max=al.length-1;min<max; min++,max--){
-            T tmp=al[min];
-            al[min]=al[max];
-            al[max]=tmp;
-        }
-    }
-
-
 }
