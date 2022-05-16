@@ -9,20 +9,26 @@ import java.util.logging.SimpleFormatter;
 
 public class Demo1 {
     public static void main(String[] args)  {
-        HashSet<Student> ts=new HashSet<>();
+        HashMap<Student,String>hm=new HashMap<>();
 
-        Student s1=new Student("zhangsan",80);
-        Student s2=new Student("lisi",100);
-        Student s3=new Student("wangwu",100);
-        Student s4=new Student("wangwu",100);
+        Student s1=new Student("小黑",22);
+        Student s2=new Student("小vl",24);
+        Student s3=new Student("小bai",29);
 
-        ts.add(s1);
-        ts.add(s2);
-        ts.add(s3);
-        ts.add(s4);
+        hm.put(s1,"江苏");
+        hm.put(s2,"上海");
+        hm.put(s3,"哈尔滨");
 
-        for (Student student:ts){
-            System.out.println(student);
+        for (Student key:hm.keySet()){
+            System.out.println(key+"----"+hm.get(key));
         }
+
+        for (Map.Entry<Student,String> entry:hm.entrySet()){
+            System.out.println(entry.getKey()+"----"+entry.getValue());
+        }
+
+        hm.forEach((Student key,String value)->{
+            System.out.println(key+"-----"+value);
+        });
     }
 }
