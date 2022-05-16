@@ -1,10 +1,31 @@
 package com.akechiko.demo1;
 
-public class Student implements Comparable<Student>{
+import java.util.Objects;
+
+public class Student{
     private String name;
-    private int chinese;
-    private int math;
-    private int english;
+    private int age;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return age == student.age && Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age);
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 
     public String getName() {
         return name;
@@ -14,61 +35,20 @@ public class Student implements Comparable<Student>{
         this.name = name;
     }
 
-    public int getChinese() {
-        return chinese;
+    public int getAge() {
+        return age;
     }
 
-    public void setChinese(int chinese) {
-        this.chinese = chinese;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public int getMath() {
-        return math;
-    }
-
-    public void setMath(int math) {
-        this.math = math;
-    }
-
-    public int getEnglish() {
-        return english;
-    }
-
-    public void setEnglish(int english) {
-        this.english = english;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", chinese=" + chinese +
-                ", math=" + math +
-                ", english=" + english +
-                '}';
-    }
-
-    public Student(String name, int chinese, int math, int english) {
+    public Student(String name, int age) {
         this.name = name;
-        this.chinese = chinese;
-        this.math = math;
-        this.english = english;
+        this.age = age;
     }
 
     public Student() {
-    }
-
-    public int getSum(){
-        return chinese+math+english;
-    }
-    @Override
-    public int compareTo(Student o) {
-        int result=this.getSum()-o.getSum();
-        result = result==0 ? this.getChinese()-o.getChinese():result;
-        result = result==0 ? this.getMath()-o.getMath():result;
-        result = result==0 ? this.getEnglish()-o.getEnglish():result;
-        result = result==0 ? this.getName().compareTo(o.getName()):result;
-        return result;
     }
 }
 
