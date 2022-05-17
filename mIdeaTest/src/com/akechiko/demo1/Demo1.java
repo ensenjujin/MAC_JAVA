@@ -9,7 +9,7 @@ import java.util.logging.SimpleFormatter;
 
 public class Demo1 {
     public static void main(String[] args)  {
-        HashMap<Student,String>hm=new HashMap<>();
+        TreeMap<Student,String>hm=new TreeMap<>();
 
         Student s1=new Student("小黑",22);
         Student s2=new Student("小vl",24);

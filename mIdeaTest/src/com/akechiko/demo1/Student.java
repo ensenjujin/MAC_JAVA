@@ -2,7 +2,7 @@ package com.akechiko.demo1;
 
 import java.util.Objects;
 
-public class Student{
+public class Student implements Comparable<Student>{
     private String name;
     private int age;
 
@@ -49,6 +49,13 @@ public class Student{
     }
 
     public Student() {
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        int result=this.getAge()-o.getAge();
+        result=result==0?this.getName().compareTo(o.getName()):result;
+        return result;
     }
 }
 
