@@ -1,32 +1,27 @@
 package com.akechiko.demo1;
 
+import java.util.concurrent.ArrayBlockingQueue;
+
 public class Foodie extends Thread{
     private Desk desk;
     public Foodie(Desk desk) {
         this.desk=desk;
     }
+
+    private ArrayBlockingQueue<String>arrayBlockingQueue;
+
+    public Foodie(ArrayBlockingQueue<String> arrayBlockingQueue) {
+        this.arrayBlockingQueue=arrayBlockingQueue;
+    }
+
     @Override
     public void run() {
-        while (true){
-            synchronized (desk.getLock()){
-                if (desk.getCount()==0){
-                    break;
-                }else{
-                    if (desk.isFlag()){
-                        System.out.println("吃货在吃汉堡包");
-                        desk.setFlag(false);
-                        desk.getLock().notifyAll();
-                        desk.setCount(desk.getCount()-1);
-                    }else {
-                        //没有就等待
-                        //使用什么对象当作锁，那么就必须用这个对象去调用等待和唤醒的方法。
-                        try {
-                            desk.getLock().wait();
-                        }catch (InterruptedException e){
-                            e.printStackTrace();
-                        }
-                    }
-                }
+        while (true) {
+            try {
+                String take = arrayBlockingQueue.take();
+                System.out.println(take);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
