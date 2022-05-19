@@ -12,18 +12,13 @@ import java.util.stream.Stream;
 
 public class Demo1 {
     public static void main(String[] args)  {
-//        File file   =new File(".");
-//        System.out.println(file.getAbsolutePath());
+        MyThread m1=new MyThread();
+        m1.start();
 
-        File file=new File("mIdeaTest/bbb");
-        if (!file.exists()){
-            file.mkdirs();
-        }
-        File newFile=new File(file,"a.txt");
-        try {
-            newFile.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
+        for (int i = 0; i < 100; i++) {
+            if ((i+1)%2==1){
+                System.out.println("主线程："+(i+1));
+            }
         }
     }
 }
