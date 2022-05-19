@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 import java.util.logging.SimpleFormatter;
 import java.util.stream.Stream;
 
@@ -15,10 +17,8 @@ public class Demo1 {
         MyThread m1=new MyThread();
         m1.start();
 
-        for (int i = 0; i < 100; i++) {
-            if ((i+1)%2==1){
-                System.out.println("主线程："+(i+1));
-            }
-        }
+        MyRunnable mr=new MyRunnable();
+        Thread th=new Thread(mr);
+        th.start();
     }
 }
