@@ -6,24 +6,24 @@ import java.nio.charset.StandardCharsets;
 
 public class ServerDemo {
     public static void main(String[] args) throws IOException {
-        ServerSocket socket=new ServerSocket(10000);
-        Socket accept=socket.accept();
-        InputStream is=accept.getInputStream();
+        ServerSocket ss=new ServerSocket(10000);
+        Socket accept=ss.accept();
+
+        BufferedInputStream bis=new BufferedInputStream(accept.getInputStream());
+        BufferedOutputStream bos=new BufferedOutputStream(new FileOutputStream("mIdeaTest/ServerDir/copy.txt"));
+
         int b;
-        while ((b=is.read())!=-1){
-            System.out.println((char) b);
+        while ((b= bis.read())!=-1){
+            bos.write(b);
         }
 
-//        OutputStream os =accept.getOutputStream();
-//        os.write("你谁呀？".getBytes());
         BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(accept.getOutputStream()));
-        bw.write("你谁呀？");
+        bw.write("上传成功");
         bw.newLine();
         bw.flush();
 
-        bw.close();
-        is.close();
+        bos.close();
         accept.close();
-        socket.close();
+        ss.close();
     }
 }
