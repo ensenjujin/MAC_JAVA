@@ -10,22 +10,8 @@ public class ServerDemo {
         ServerSocket ss=new ServerSocket(10000);
         while (true) {
             Socket accept=ss.accept();
-
-            BufferedInputStream bis=new BufferedInputStream(accept.getInputStream());
-            BufferedOutputStream bos=new BufferedOutputStream(new FileOutputStream("mIdeaTest/ServerDir/"+ UUID.randomUUID().toString()+".txt"));
-
-            int b;
-            while ((b= bis.read())!=-1){
-                bos.write(b);
-            }
-
-            BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(accept.getOutputStream()));
-            bw.write("上传成功");
-            bw.newLine();
-            bw.flush();
-
-            bos.close();
-            accept.close();
+            ThreadSocket ts=new ThreadSocket(accept);
+            new Thread(ts).start();
         }
 //        ss.close();
     }
