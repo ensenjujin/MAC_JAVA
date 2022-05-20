@@ -1,28 +1,29 @@
 package com.akechiko.demo1;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class ClientDemo {
     public static void main(String[] args) throws IOException {
-
-        Scanner sc=new Scanner(System.in);
-
-        DatagramSocket ds=new DatagramSocket();
-        while (true) {
-            String s=sc.nextLine();
-            if ("886".equals(s)){
-                break;
-            }
-            byte[] bytes=s.getBytes();
-            int port=10000;
-            InetAddress address=InetAddress.getByName("127.0.0.1");
-
-            DatagramPacket dp=new DatagramPacket(bytes,bytes.length,address,port);
-            ds.send(dp);
+        Socket socket=new Socket("127.0.0.1",10000);
+        OutputStream os=socket.getOutputStream();
+        os.write("hello".getBytes());
+        socket.shutdownOutput();
+//        InputStream is=socket.getInputStream();
+//        int b;
+//        while ((b=is.read())!=-1){
+//            System.out.println((char) b);
+//        }
+        BufferedReader br=new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        String line;
+        while ((line=br.readLine())!=null){
+            System.out.println(line);
         }
-        ds.close();
+
+        br.close();
+        os.close();
+        socket.close();
     }
 }
